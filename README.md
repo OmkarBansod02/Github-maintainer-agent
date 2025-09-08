@@ -9,8 +9,6 @@ An intelligent AI-powered GitHub repository maintenance bot that automates contr
 - **🧠 FAQ Learning System**: Builds knowledge base from past interactions for better future responses
 - **⏰ Neglected PR Monitoring**: Tracks PRs and alerts maintainers for items needing attention (>7 days)
 - **📊 Weekly Health Reports**: Generates comprehensive repository status reports with actionable insights
-- **🌐 Web Search Integration**: Uses real-time web search for current repository intelligence
-- **🤖 Professional Email Responses**: Sends properly formatted HTML emails with context-aware content
 
 ## 📋 Prerequisites
 
@@ -77,24 +75,6 @@ pip install -r requirements.txt
    # Monitoring Schedule (in seconds)
    MONITORING_INTERVAL=604800
    ```
-
-### Step 5: Get Required API Keys
-
-#### AgentMail API Key
-1. Contact AgentMail support at contact@agentmail.to
-2. Request API access for your project
-3. Add the provided API key to your `.env` file
-
-#### OpenAI API Key
-1. Visit [OpenAI Platform](https://platform.openai.com/api-keys)
-2. Create a new API key
-3. Add it to your `.env` file as `OPENAI_API_KEY`
-
-#### ngrok Setup
-1. Sign up at [ngrok.com](https://ngrok.com/)
-2. Get your authtoken from the dashboard
-3. Set up a custom domain (optional but recommended)
-4. Add authtoken to `.env` as `NGROK_AUTHTOKEN`
 
 ## 🚀 Running the Bot
 
