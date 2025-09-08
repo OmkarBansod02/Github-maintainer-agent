@@ -28,7 +28,7 @@ Before setting up the project, ensure you have:
 
 ```bash
 git clone https://github.com/YourUsername/AgentMail-PR_Bot.git
-cd AgentMail-PR_Bot
+cd Github-maintainer-agent
 ```
 
 ### Step 2: Create Virtual Environment (Recommended)
