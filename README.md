@@ -96,33 +96,6 @@ pip install -r requirements.txt
 3. Set up a custom domain (optional but recommended)
 4. Add authtoken to `.env` as `NGROK_AUTHTOKEN`
 
-## 🔧 Configuration Details
-
-### Environment Variables Explained
-
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `AGENTMAIL_API_KEY` | Your AgentMail API key for email processing | `abc123...` |
-| `OPENAI_API_KEY` | OpenAI API key for AI responses | `sk-proj-...` |
-| `INBOX_USERNAME` | Username for your AgentMail inbox | `maintainer` |
-| `WEBHOOK_DOMAIN` | Your ngrok domain for webhooks | `yourapp.ngrok-free.app` |
-| `NGROK_AUTHTOKEN` | ngrok authentication token | `2a1b3c4d...` |
-| `TARGET_GITHUB_REPO` | Repository to monitor (owner/repo format) | `microsoft/vscode` |
-| `REPORT_TARGET_EMAIL` | Email address for health reports | `admin@company.com` |
-| `MONITORING_INTERVAL` | Report frequency in seconds (604800 = 1 week) | `604800` |
-
-### Repository Configuration Format
-
-**❌ Incorrect:**
-```
-TARGET_GITHUB_REPO=https://github.com/owner/repo.git
-```
-
-**✅ Correct:**
-```
-TARGET_GITHUB_REPO=owner/repo
-```
-
 ## 🚀 Running the Bot
 
 ### Start the Bot
@@ -193,116 +166,6 @@ For testing without waiting a week:
 3. **Monitor bot logs** for webhook processing
 4. **Check for automated response** to contributor
 
-## 📁 Project Structure
-
-```
-AgentMail-PR_Bot/
-├── main.py                 # Main bot application
-├── utils.py                # Utility functions for GitHub processing
-├── System_prompt.txt       # Agent system prompt and behavior
-├── requirements.txt        # Python dependencies
-├── .env                    # Environment configuration (not in repo)
-├── .env.example           # Example environment file
-├── .gitignore             # Git ignore rules
-├── README.md              # This file
-└── maintiner-agent.md     # Detailed agent documentation
-```
-
-## 🔍 Features Deep Dive
-
-### Duplicate Detection Algorithm
-
-The bot uses sophisticated scoring based on:
-- **Error Keywords** (TypeError, ImportError, etc.)
-- **File Patterns** (matching file names/extensions)
-- **Function Patterns** (similar function calls)
-- **Semantic Similarity** (word overlap analysis)
-
-### Learning System
-
-- **FAQ Storage**: Builds knowledge base from email interactions
-- **Pattern Recognition**: Identifies common contributor questions
-- **Response Improvement**: Applies learned knowledge to future similar issues
-
-### Health Reports Include
-
-- 📊 Repository metrics and status
-- 🚀 Recent commits and releases
-- 🐛 Open issues and PR analysis
-- 🔒 Security alerts and vulnerabilities
-- 📈 Community engagement metrics
-- ⚡ Actionable recommendations
-
-## 🚨 Troubleshooting
-
-### Common Issues
-
-#### 1. Webhook Not Receiving Events
-```bash
-# Check ngrok tunnel status
-curl https://your-domain.ngrok-free.app/webhooks
-
-# Verify webhook configuration in AgentMail dashboard
-# Ensure GitHub notifications are sent to correct email
-```
-
-#### 2. API Authentication Errors
-```bash
-# Verify API keys are correctly set
-python -c "import os; from dotenv import load_dotenv; load_dotenv(); print('AgentMail:', bool(os.getenv('AGENTMAIL_API_KEY'))); print('OpenAI:', bool(os.getenv('OPENAI_API_KEY')))"
-```
-
-#### 3. No Health Reports Generated
-- Check `TARGET_GITHUB_REPO` format (should be `owner/repo`, not full URL)
-- Verify `REPORT_TARGET_EMAIL` is set correctly
-- Monitor terminal logs for monitoring thread activity
-
-#### 4. Duplicate Detection Not Working
-- Ensure bot has processed some initial emails to build knowledge base
-- Check FAQ knowledge storage in terminal logs
-- Verify similar keywords/patterns in test issues
-
-### Debug Mode
-
-Add debug logging to main.py:
-```python
-import logging
-logging.basicConfig(level=logging.DEBUG)
-```
-
-### Log Analysis
-
-Monitor these log messages:
-- `[WEBHOOK]` - Incoming email processing
-- `[MONITOR]` - Repository health monitoring
-- `[DUPLICATE]` - Duplicate issue detection
-- `[FAQ]` - Knowledge base updates
-
-## 🔐 Security Considerations
-
-- **Never commit `.env` file** - Contains sensitive API keys
-- **Use environment variables** for all credentials
-- **Regularly rotate API keys** - Update them periodically
-- **Monitor bot responses** - Ensure no sensitive data exposure
-- **Use ngrok authentication** - Secure your webhook endpoint
-
-## 📈 Performance Optimization
-
-### Production Recommendations
-
-1. **Use a stable hosting service** instead of local development
-2. **Configure proper logging** with log rotation
-3. **Set up monitoring alerts** for bot health
-4. **Implement rate limiting** for API calls
-5. **Use database storage** for larger FAQ knowledge bases
-
-### Scaling Considerations
-
-- Consider Redis for FAQ knowledge storage at scale
-- Implement database for PR tracking persistence
-- Use message queues for high-volume repositories
-- Add caching for repository information
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -312,16 +175,4 @@ Monitor these log messages:
 5. Push to branch: `git push origin feature-name`
 6. Submit a pull request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 📞 Support
-
-- **Issues**: Open a GitHub issue for bugs or feature requests
-- **Questions**: Contact the development team
-- **AgentMail Support**: contact@agentmail.to
-
----
-
-**Ready to automate your GitHub repository management? Start with the installation steps above! 🚀**
